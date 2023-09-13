@@ -1,4 +1,5 @@
 import {
+  Alert,
   FlatList,
   Text,
   TextInput,
@@ -73,13 +74,55 @@ export default function Home() {
         // Resposta correta
         setPontos(pontos + 10);
         setCertas(certas + 1);
+        Alert.alert(
+          "Você acertou",
+          "Deseja uma nova conta?",
+          [
+            {
+              text: "Cancelar",
+              onPress: () => handleRandom(),
+              style: "cancel",
+            },
+            {
+              text: "OK",
+              onPress: () => console.log("OK Pressionado"),
+            },
+          ],
+          { cancelable: false }
+        );
       } else {
         // Resposta incorreta
         setErradas(erradas + 1);
         setPontos(pontos - 5);
+        Alert.alert(
+          "Você errou",
+          "Deseja uma nova conta?",
+          [
+            {
+              text: "Cancelar",
+              onPress: () => console.log("Cancelar Pressionado"),
+              style: "cancel",
+            },
+            {
+              text: "Sim",
+              onPress: () => handleRandom(),
+            },
+          ],
+          { cancelable: false }
+        );
       }
     }
-    handleRandom();
+  }
+
+  function handleZerar() {
+    setPontos(0),
+      setCertas(0),
+      setErradas(0),
+      setNum(0),
+      setNum2(0),
+      setOperador(0),
+      setResultado(""),
+      setOperadorSelecionado("");
   }
 
   return (
@@ -109,6 +152,11 @@ export default function Home() {
       <View style={styles.container4}>
         <TouchableOpacity style={styles.button2} onPress={handleVerifica}>
           <Text style={styles.textButton}>Validar</Text>
+        </TouchableOpacity>
+      </View>
+      <View style={styles.container5}>
+        <TouchableOpacity style={styles.button3} onPress={handleZerar}>
+          <Text style={styles.textButton}>Novo jogo</Text>
         </TouchableOpacity>
       </View>
     </View>

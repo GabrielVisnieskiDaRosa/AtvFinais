@@ -20,6 +20,9 @@ export const styles = StyleSheet.create({
     height: 100,
     marginTop: 10,
   },
+  container5:{
+    height: 50,
+  },
   subContainer: {
     height: 85,
     flexDirection: "row",
@@ -84,4 +87,12 @@ export const styles = StyleSheet.create({
     flex: 1,
     textAlign: "center",
   },
+  button3:{
+    backgroundColor: "#D34C6C",
+    width: 200,
+    height: 50,
+    marginLeft: 80,
+    borderRadius: 5,
+
+  }
 });
